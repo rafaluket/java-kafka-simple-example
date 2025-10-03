@@ -17,11 +17,6 @@ public class VendaController {
 
     @PostMapping
     public ResponseEntity<Void> realizarVenda(@RequestBody String idProduto){
-        //Salvando no banco de dados
-        //Criando a venda
-        // disparando microservico para processar pagamento
-        //atualizar estoque do produto
-
         kafkaTemplate.send("estoque-topico", idProduto);
         return ResponseEntity.ok().build();
     }
